@@ -1,3 +1,4 @@
+
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,10 @@ class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   static Page<void> page() => const MaterialPage<void>(child: LoginPage());
+
+  static Route<void> route(){
+    return MaterialPageRoute(builder: (_) => const LoginPage());
+  }
 
   @override
   Widget build(BuildContext context) {

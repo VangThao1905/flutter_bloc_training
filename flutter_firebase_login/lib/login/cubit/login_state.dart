@@ -1,4 +1,3 @@
-import 'dart:html';
 
 import 'package:equatable/equatable.dart';
 import 'package:form_inputs/form_inputs.dart';

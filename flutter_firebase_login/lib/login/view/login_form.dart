@@ -1,6 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_firebase_login/app/app.dart';
+import 'package:flutter_firebase_login/app/bloc/app_state.dart';
+import 'package:flutter_firebase_login/home/view/home_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../sign_up/view/sign_up_page.dart';
@@ -14,6 +18,7 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
+      listenWhen: (previous, current) => previous.status != current.status,
         listener: (context, state) {
           if (state.status.isFailure) {
             ScaffoldMessenger.of(context)
@@ -29,9 +34,10 @@ class LoginForm extends StatelessWidget {
                 child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset(
-                  'assets/bloc_logo_small.png',
-                  height: 120,
+                const Icon(
+                  Icons.account_circle,
+                  size: 76,
+                  color: Colors.grey,
                 ),
                 const SizedBox(
                   height: 16,
